@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Transformation</title>
+  <!-- p5.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.10.0/lib/p5.min.js"></script>
+
+  <!-- Simple styling -->
+  <style>
+    body {
+      font-family: "Georgia", serif;
+      background-color: #fdfdfd;
+      margin: 40px;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    /* Left column for text + links */
+    .content {
+      flex: 1;
+    }
+
+    h1 {
+      color: #334;
+      font-family: "Georgia", serif;
+    }
+
+    ul {
+      list-style: disc;
+      margin-top: 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #0033aa;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #ff6600;
+    }
+
+    /* Canvas container to control where sketch appears */
+    #sketch-holder {
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1>Watch me transform</h1>
+    <p>I can transform myself into a shark.</p>
+
+    <ul>
+      <li><a href="index2.html">My city</a></li>
+      <li><a href="audio.html">Sounds of my city</a></li>
+      <li><a href="animation.html">Watch me dance!</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="final.html">Final Project</a></li>
+    </ul>
+  </div>
+
+  <!-- The p5 canvas will go here -->
+  <div id="sketch-holder"></div>
+
+  <!-- Load your sketch.js -->
+  <script src="sketch.js"></script>
+
+  <script>
+    // Tell p5 to draw inside the #sketch-holder div instead of full body
+    const realCreateCanvas = window.createCanvas;
+    window.createCanvas = function(w, h) {
+      const c = realCreateCanvas(w, h);
+      c.parent("sketch-holder");
+      return c;
+    };
+  </script>
+
+</body>
+</html>
+
